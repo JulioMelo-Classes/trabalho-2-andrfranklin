@@ -7,6 +7,7 @@
 
 using namespace std;
 
+
 // Função de apoio que recebe um istringstream e
 // le todo texto restante até o fim da linha
 string restoDe(istringstream &ss) {

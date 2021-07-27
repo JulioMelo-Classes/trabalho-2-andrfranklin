@@ -12,7 +12,9 @@ using namespace std;
 string Sistema::quit() {
   return "Saindo...";
 }
-
+/*
+A1.2 ok
+*/
 string Sistema::create_user (const string email, const string senha, const string nome) {
 
 	for(auto it = usuarios.begin(); it != usuarios.end(); it++){
@@ -28,6 +30,9 @@ string Sistema::create_user (const string email, const string senha, const strin
   return "Usuario criado com sucesso";
 }
 
+/*
+A1.3 ok
+*/
 string Sistema::login(const string email, const string senha) {
 	Usuario u;
 	for(auto it = usuarios.begin(); it != usuarios.end(); it++){
@@ -58,6 +63,9 @@ string Sistema::login(const string email, const string senha) {
 
 }
 
+/*
+A2.1 ok
+*/
 string Sistema::disconnect(int id) {
 
 	Usuario u;
@@ -81,14 +89,17 @@ string Sistema::disconnect(int id) {
 		}
 	}
 
-  return "Não está conectado";
+  return "Não está conectado"; //aqui é algum erro na verdade... tipo id < 0
 }
 
+/*
+A2.2 ok
+*/
 string Sistema::create_server(int id, const string nome) {
 	auto it = usuariosLogados.find(id);
 
 	if(it == usuariosLogados.end()){
-		return "Acesso negado";
+		return "Acesso negado"; //esse erro aqui é "não logado"
 	}
 
 	for(auto its = servidores.begin(); its != servidores.end(); its++){
@@ -103,11 +114,14 @@ string Sistema::create_server(int id, const string nome) {
   return "Servidor criado";
 }
 
+/*
+A2.3 ok
+*/
 string Sistema::set_server_desc(int id, const string nome, const string descricao) {
 	auto it = usuariosLogados.find(id);
 
 	if(it == usuariosLogados.end()){
-		return "Acesso negado";
+		return "Acesso negado"; //parecido com o anterior
 	}
 
 	for(auto its = servidores.begin(); its != servidores.end(); its++){
@@ -124,6 +138,9 @@ string Sistema::set_server_desc(int id, const string nome, const string descrica
   return "Servidor '" + nome + "' não existe";
 }
 
+/*
+A2.4 ok
+*/
 string Sistema::set_server_invite_code(int id, const string nome, const string codigo) {
 
 	for(auto it = servidores.begin(); it != servidores.end(); it++){
@@ -145,6 +162,11 @@ string Sistema::set_server_invite_code(int id, const string nome, const string c
   return "servidor " + nome + " não encontrado";
 }
 
+/*
+A2.5 ok
+Neste caso você precisa listar todos os servidores do sistema, da forma como está vc está listando
+apenas o servidor que o usuário está!
+*/
 string Sistema::list_servers(int id) {
 	string result = "";
 	for(auto it = servidores.begin(); it != servidores.end(); it++){
@@ -155,11 +177,14 @@ string Sistema::list_servers(int id) {
   return result;
 }
 
+/*
+A2.6 ok
+*/
 string Sistema::remove_server(int id, const string nome) {
 	auto it = usuariosLogados.find(id);
 
 	if(it == usuariosLogados.end()){
-		return "Acesso negado";
+		return "Acesso negado"; //idem ao A2.4
 	}	
 
 

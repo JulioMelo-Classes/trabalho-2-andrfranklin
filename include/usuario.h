@@ -3,6 +3,11 @@
 
 #include<string>
 
+/*
+Classe usuário CP1 70%
+Removi 30% pois você implementou tudo no .h
+*/
+
 class Usuario{
 	/*
 		TODO implementação dos atributos e métodos

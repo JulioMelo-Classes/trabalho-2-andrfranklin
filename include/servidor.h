@@ -8,6 +8,10 @@
 
 #include "canaltexto.h"
 
+/*
+Classe servidor CP1 70%
+Tirei 30% pois você implementou tudo no .h
+*/
 class Servidor{
 	/*
 		TODO implementação dos atributos e métodos
