@@ -21,7 +21,7 @@ string Sistema::create_user (const string email, const string senha, const strin
 		}
 	}
 
-	int id = usuarios.size()+1;
+	int id = usuarios.size();
 	Usuario u(id,nome, email, senha);
 	usuarios.push_back(u);
 
@@ -48,7 +48,7 @@ string Sistema::login(const string email, const string senha) {
 	}
 
 	if(u.getEmail() == email && u.getSenha() == senha){
-		usuariosLogados.insert(u.getId(),{});
+		usuariosLogados.insert({u.getId(), {}});
 		string mensagem = "Logado como " + u.getEmail();
   	return mensagem;
 	}else{
@@ -75,7 +75,7 @@ string Sistema::disconnect(int id) {
 
 	for(auto it = usuariosLogados.begin(); it != usuariosLogados.end(); it++){
 		if(it->first == id){
-			usuariosLogados.erase(id);
+			usuariosLogados.erase(it);
 			string mensagem = "Desconectando usuário " + u.getEmail();
 			return mensagem;
 		}
@@ -110,12 +110,11 @@ string Sistema::set_server_desc(int id, const string nome, const string descrica
 		return "Acesso negado";
 	}
 
-	for(auto it = servidores.begin(); it != servidores.end(); it++){
-		if(it->getNome() == nome){
-			if(it->getUsuarioDonoId() == id){
-				it->setDescricao(descricao);
-				string mensagem = "Descrição do servidor " + nome + "' modificada!";
-				return mensagem;
+	for(auto its = servidores.begin(); its != servidores.end(); its++){
+		if(its->getNome() == nome){
+			if(its->getUsuarioDonoId() == id){
+				its->setDescricao(descricao);
+				return "Descrição do servidor " + nome + "' modificada!";;
 			}else{
 				return "Você não pode alterar a descrição de um servidor que não foi criado por você";
 			}
@@ -126,15 +125,64 @@ string Sistema::set_server_desc(int id, const string nome, const string descrica
 }
 
 string Sistema::set_server_invite_code(int id, const string nome, const string codigo) {
-  return "set_server_invite_code NÃO IMPLEMENTADO";
+
+	for(auto it = servidores.begin(); it != servidores.end(); it++){
+		if(it->getNome() == nome){
+			if(it->getUsuarioDonoId() == id){
+				if(codigo == ""){
+					it->setCodigoConvite("");
+					return "Código de convite do servidor '"+ nome + "' removido!";
+				}else{
+					it->setCodigoConvite(codigo);
+					return "Código de convite do servidor '"+ nome +"' modificado!";
+				}
+			}else{
+				return "Você não tem permissão para realizar esta operação";
+			}
+		}
+	}
+
+  return "servidor " + nome + " não encontrado";
 }
 
 string Sistema::list_servers(int id) {
-  return "list_servers NÃO IMPLEMENTADO";
+	string result = "";
+	for(auto it = servidores.begin(); it != servidores.end(); it++){
+		if(it->verificaID(id)){
+			result += it->getNome() + "\n";
+		}
+	}
+  return result;
 }
 
 string Sistema::remove_server(int id, const string nome) {
-  return "remove_server NÃO IMPLEMENTADO";
+	auto it = usuariosLogados.find(id);
+
+	if(it == usuariosLogados.end()){
+		return "Acesso negado";
+	}	
+
+
+	for(auto its = servidores.begin(); its != servidores.end(); its++){
+		if(its->getNome() == nome){
+			if(its->getUsuarioDonoId() == id){
+				servidores.erase(its);
+
+				for(auto its=usuariosLogados.begin(); its != usuariosLogados.end(); its++){
+					if(its->second.first == nome){
+						its->second.first = "";
+						its->second.second = "";
+					}
+				}
+
+				return "Servidor '"+ nome + "' removido!";
+			}else{
+				return "Você não é o dono do servidor '" + nome + "'";
+			}
+		}
+	}
+
+  return "Servidor '"+ nome + "' não encontrado";
 }
 
 string Sistema::enter_server(int id, const string nome, const string codigo) {

@@ -15,6 +15,15 @@ class CanalTexto{
 		std::string nome;
 		std::vector<Mensagem> mensagens;
 
+	public:
+		CanalTexto(std::string nome_){
+			nome = nome_;
+		}
+
+		std::string getNome(){
+			return nome;
+		}
+
 };
 
 #endif

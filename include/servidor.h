@@ -39,7 +39,7 @@ class Servidor{
 			return nome;
 		}
 
-		void setDescricao(std::string des){
+		void setDescricao(std::string desc){
 			descricao = desc;
 		}
 
@@ -60,9 +60,19 @@ class Servidor{
 		}
 
 		void listaCanais(){
-			for(auto it = canaisTexto.begin(); it != canaisTexto.end(); it++){
-				std::cout<< it->getNome() << endl;
+			for(CanalTexto c : this->canaisTexto){
+				std::cout<< c.getNome() << std::endl;
 			}
+		}
+
+		bool verificaID(int id){
+			for(auto it = this->participantesIDs.begin(); it != this->participantesIDs.end(); it++){
+				if(*it == id){
+					return true;
+				}
+			}
+
+			return false;
 		}
 
 };
