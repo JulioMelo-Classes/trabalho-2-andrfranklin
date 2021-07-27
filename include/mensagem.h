@@ -8,6 +8,9 @@ class Mensagem{
 		TODO implementação dos atributos e métodos
 	*/
 
+	/*! 
+ 	 * atributos públicos da classe Mensagem
+	 */
 	public:
 		std::string datahora;
 		int enviadaPor;
