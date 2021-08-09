@@ -24,17 +24,13 @@ class CanalTexto{
  	 	 * Construtor para a classe CanalTexto
 		 * @param string nome
 	 	 */
-		CanalTexto(std::string nome_){
-			nome = nome_;
-		}
+		CanalTexto(std::string nome_);
 
 		/*! 
  	 	 * método que devolve o nome do CanalTexto
 		 * @return nome do CanalTexto
 	 	 */
-		std::string getNome(){
-			return nome;
-		}
+		std::string getNome();
 
 };
 

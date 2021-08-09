@@ -89,7 +89,7 @@ string Sistema::disconnect(int id) {
 		}
 	}
 
-  return "Não está conectado"; //aqui é algum erro na verdade... tipo id < 0
+  return "O id informado é inválido";
 }
 
 /*
@@ -99,7 +99,7 @@ string Sistema::create_server(int id, const string nome) {
 	auto it = usuariosLogados.find(id);
 
 	if(it == usuariosLogados.end()){
-		return "Acesso negado"; //esse erro aqui é "não logado"
+		return "O usuário não está logado";
 	}
 
 	for(auto its = servidores.begin(); its != servidores.end(); its++){
@@ -121,7 +121,7 @@ string Sistema::set_server_desc(int id, const string nome, const string descrica
 	auto it = usuariosLogados.find(id);
 
 	if(it == usuariosLogados.end()){
-		return "Acesso negado"; //parecido com o anterior
+		return "O usuário não está logado";
 	}
 
 	for(auto its = servidores.begin(); its != servidores.end(); its++){
@@ -170,9 +170,7 @@ apenas o servidor que o usuário está!
 string Sistema::list_servers(int id) {
 	string result = "";
 	for(auto it = servidores.begin(); it != servidores.end(); it++){
-		if(it->verificaID(id)){
 			result += it->getNome() + "\n";
-		}
 	}
   return result;
 }
@@ -184,7 +182,7 @@ string Sistema::remove_server(int id, const string nome) {
 	auto it = usuariosLogados.find(id);
 
 	if(it == usuariosLogados.end()){
-		return "Acesso negado"; //idem ao A2.4
+		return "O usuário não está logado";
 	}	
 
 
@@ -211,6 +209,19 @@ string Sistema::remove_server(int id, const string nome) {
 }
 
 string Sistema::enter_server(int id, const string nome, const string codigo) {
+	for(auto it = servidores.begin(); it != servidores.end(); it++ ){
+		if(it->getNome() == nome){
+			if(it->getCodigoConvite() != ""){
+				if(codigo != ""){
+					if(it->getCodigoConvite() == codigo){
+						it->
+					}
+				}else{
+					return "Servidor requer código de convite";
+				}	
+			}
+		}
+	}
   return "enter_server NÃO IMPLEMENTADO";
 }
 

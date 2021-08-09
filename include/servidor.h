@@ -8,10 +8,6 @@
 
 #include "canaltexto.h"
 
-/*
-Classe servidor CP1 70%
-Tirei 30% pois você implementou tudo no .h
-*/
 class Servidor{
 	/*
 		TODO implementação dos atributos e métodos
@@ -39,99 +35,80 @@ class Servidor{
 		 * @param int id que representa o id do usuário dono so servidor
 		 * @param int nome que indica o nome do servidor
 	 	 */
-		Servidor(int id, std::string nome_){
-			usuarioDonoId = id,
-			nome = nome_;
-		}
+		Servidor(int id, std::string nome_);
 
 
 		/*! 
  	 	 * Método que retorna o id do usuário dono do servidor
 		 * @return int com o id do usuário dono do servidor
 	 	 */
-		int getUsuarioDonoId(){
-			return usuarioDonoId;
-		}
+		int getUsuarioDonoId();
 
 		/*! 
  	 	 * Método muda o nome do servidor
 		 * @param string nome que indica o novo nome
 	 	 */
-		void setNome(std::string nome_){
-			nome = nome_;
-		}
+		void setNome(std::string nome_);
 
 		/*! 
  	 	 * Método que retorna o nome do servidor
 		 * @return string com o nome do servidor
 	 	 */
-		std::string getNome(){
-			return nome;
-		}
+		std::string getNome();
 
 		/*! 
  	 	 * Método muda a descricao do servidor
 		 * @param string desc que indica a nova descricao
 	 	 */
-		void setDescricao(std::string desc){
-			descricao = desc;
-		}
+		void setDescricao(std::string desc);
 
 		/*! 
  	 	 * Método que retorna a descricao do servidor
 		 * @return string com a descricao do servidor
 	 	 */
-		std::string getDescricao(){
-			return descricao;
-		}
+		std::string getDescricao();
 
 		/*! 
  	 	 * Método muda o código de convite do servidor
 		 * @param string code que indica o novo código de convite
 	 	 */
-		void setCodigoConvite(std::string code){
-			codigoConvite = code;
-		}
+		void setCodigoConvite(std::string code);
 
 		/*! 
  	 	 * Método que retorna o codigo de convite do servidor
 		 * @return string com o codigo de convite do servidor
 	 	 */
-		std::string getCodigoConvite(){
-			return codigoConvite;
-		}
+		std::string getCodigoConvite();
 
 		/*! 
  	 	 * Método que adiciona um novo canal de texto ao servidor
 		 * @param objeto CanalTexto canal que indica o novo canal a ser adionado
 	 	 */
-		void addCanal(CanalTexto canal){
-			this->canaisTexto.push_back(canal);
-		}
+		void addCanal(CanalTexto canal);
 
 		/*! 
  	 	 * Método que lista o nome dos canais de texto cadastrados no servidor
 	 	 */
-		void listaCanais(){
-			for(CanalTexto c : this->canaisTexto){
-				std::cout<< c.getNome() << std::endl;
-			}
-		}
+		void listaCanais();
 
 		/*! 
  	 	 * Método que verifica se um usuário é participante do servidor
 		 * @param int id que indica o id do usuário para a verificação
 		 * @return booleano verdadeiro se o id estiver dentro do vetor de participantes
 	 	 */
-		bool verificaID(int id){
-			for(auto it = this->participantesIDs.begin(); it != this->participantesIDs.end(); it++){
-				if(*it == id){
-					return true;
-				}
-			}
+		bool verificaID(int id);
 
-			return false;
-		}
+		/*! 
+ 	 	 * Método adiciona um participante ao vetor de participantes do servidor
+		 * @param int id que representa o id do usuário
+	 	 */
+		void addParticipante(int id);
+
+		/*! 
+ 	 	 * Método remove um participante do vetor de participantes do servidor
+		 * @param int id que representa o id do usuário
+	 	 */
+		void removeParticipante(int id);
 
 };
 
