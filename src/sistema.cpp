@@ -37,6 +37,18 @@ string Sistema::create_user(const string email, const string senha, const string
 		}
 	}
 
+	if(senha == ""){
+		return "A senha do usuário é obrigatória";
+	}
+
+	if(email == ""){
+		return "O e-mail do usuário é obrigatório";
+	}
+
+	if(nome == ""){
+		return "O nome do usuário é obrigatório";
+	}
+
 	int id = usuarios.size();
 	Usuario u(id, nome, email, senha);
 	usuarios.push_back(u);
@@ -349,6 +361,12 @@ string Sistema::enter_server(int id, const string nome, const string codigo)
 	{
 		if (it->getNome() == nome)
 		{
+			if(it->getUsuarioDonoId() == id){
+				it->addParticipante(id);
+				user->second.first = nome;
+				return "Entrou no servidor com sucesso";
+			}
+			
 			if (it->getCodigoConvite() != "")
 			{
 				if (codigo != "")

@@ -48,7 +48,7 @@ string CanalTexto::listaMensagens(vector<Usuario> usuarios){
 			}
 		}
 		
-		result += nome + "<" + it->datahora + ">" + it->conteudo;
+		result += nome + "<" + it->datahora + ">" + it->conteudo + "\n";
 		count++;
 	}
 	

@@ -1,0 +1,35 @@
+create-user julio@professor.com senhaHard julio
+create-user franklin@aluno.com
+create-user franklin@aluno.com senhaEasy franklin
+login julio@professor.com
+login julio@professor.com senhaHard
+list-servers
+list-servers 0
+create-server lp1
+create-server 0 lp1
+enter-server 0 lp1
+create-channel 0 geral
+list-channels 0
+set-server-desc 0 lp1 servidor da disciplina de lp1
+set-server-invite-code 0 lp1 123123
+disconnect 0
+login franklin@aluno.com senhaEasy
+enter-server 1 lp1
+enter-server 1 lp1
+enter-server 1 lp1 123123
+list-channels 1
+create-channel 1 quero_baguncar
+enter-channel 1 quero_baguncar
+enter-channel 1 geral
+send-message 1 desculpa prossor, queria baguncar n
+send-message 0 te vejo na prova hahaha
+login julio@professor.com senhaHard
+enter-server 0 lp1
+enter-channel 0 geral
+send-message 0 te vejo na prova hahaha
+send-message 1 milas quei
+send-message 1 vou sair aqui
+list-messages 1
+leave-channel 1 geral
+leave-server 1 lp1
+quit
