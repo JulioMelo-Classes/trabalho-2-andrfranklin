@@ -1,5 +1,4 @@
-# Base para a atividade 02 de LP1
-Entrega final do trabalho 2 de LP1:
+# Entrega final do trabalho 2 de LP1:
 
 ## Para compilar
 
