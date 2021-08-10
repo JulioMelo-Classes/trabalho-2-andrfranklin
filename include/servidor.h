@@ -128,7 +128,7 @@ public:
 		 * @param string Um nome do canal de texto
 		 * @param string uma mensagem para o canal
 	 	 */
-	void adicionaMensagem(int id, std::string canal, string m);
+	void adicionaMensagem(int id, std::string canal, std::string m);
 
 	/*! 
  	 	 * busca canal de texto
