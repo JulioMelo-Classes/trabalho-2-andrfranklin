@@ -3,7 +3,8 @@
 
 #include<string>
 
-class Usuario{
+class Usuario
+{
 	/*
 		TODO implementação dos atributos e métodos
 	*/

@@ -5,9 +5,11 @@
 #include <string>
 
 #include "mensagem.h"
+#include "usuario.h"
 
 
-class CanalTexto{
+class CanalTexto
+{
 	/*
 		TODO implementação dos atributos e métodos
 	*/
@@ -31,6 +33,18 @@ class CanalTexto{
 		 * @return nome do CanalTexto
 	 	 */
 		std::string getNome();
+
+		/*! 
+ 	 	 * Adiciona mensagem em um canal de texto
+		 * @param Mensagem Um objeto do tipo mensagem
+	 	 */
+		void adicionaMensagem(Mensagem m);
+
+		/*! 
+ 	 	 * Retorna todas as mensagens do canal
+		 * @return as mensagens do canal
+	 	 */
+		std::string listaMensagens(std::vector<Usuario> usuarios);
 
 };
 

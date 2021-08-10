@@ -3,7 +3,8 @@
 
 #include <string>
 
-class Mensagem{
+class Mensagem
+{
 	/*
 		TODO implementação dos atributos e métodos
 	*/
@@ -16,6 +17,8 @@ class Mensagem{
 		int enviadaPor;
 		std::string conteudo;
 
+	public:
+		Mensagem(int id, std::string mensagem);
 };
 
 #endif
