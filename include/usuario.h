@@ -55,6 +55,7 @@ class Usuario
 
 		/*! 
  	 	 * Método que retorna uma string com o valor do email do usuario
+		 * @return string com e-mail do usuário
 	 	 */
 		std::string getEmail();
 
@@ -68,6 +69,7 @@ class Usuario
 
 		/*! 
  	 	 * Método que retorna uma string com o valor da senha do usuario
+		* @return string com a senha do usuário
 	 	 */
 		std::string getSenha();
 

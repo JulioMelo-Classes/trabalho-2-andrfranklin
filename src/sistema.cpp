@@ -17,6 +17,15 @@ string Sistema::quit()
 /*
 A1.2 ok
 */
+
+/*! 
+ * Função que realiza um cadastro de um usuário
+ * @param string nome indicando o nome do usuario
+ * @param string email indicando o email do usuario
+ * @param string senha indicando a senha do usuario
+ * 
+ * @return Uma string informando o resultado da operação de criação
+ */
 string Sistema::create_user(const string email, const string senha, const string nome)
 {
 
@@ -38,6 +47,14 @@ string Sistema::create_user(const string email, const string senha, const string
 /*
 A1.3 ok
 */
+
+/*! 
+ * Função que realiza o login de um usuário
+ * @param string email indicando o email do usuario
+ * @param string senha indicando a senha do usuario
+ * 
+ * @return string informando o resultado da operação de criação
+ */
 string Sistema::login(const string email, const string senha)
 {
 	Usuario u;
@@ -78,6 +95,13 @@ string Sistema::login(const string email, const string senha)
 /*
 A2.1 ok
 */
+
+/*! 
+ * Função que realiza o logOut de um usuário logado
+ * @param id indicando um usuário logado
+ * 
+ * @return Uma string informando o resultado da operação de criação
+ */
 string Sistema::disconnect(int id)
 {
 
@@ -109,6 +133,14 @@ string Sistema::disconnect(int id)
 /*
 A2.2 ok
 */
+
+/*! 
+ * Função que realiza a criaçao de um servidor
+ * @param int id indicando um usuário logado
+ * @param string nome indicando o nome do novo servidor
+ * 
+ * @return Uma string informando o resultado da operação de criação
+ */
 string Sistema::create_server(int id, const string nome)
 {
 	auto user = usuariosLogados.find(id);
@@ -135,6 +167,15 @@ string Sistema::create_server(int id, const string nome)
 /*
 A2.3 ok
 */
+
+/*! 
+ * Função que realiza a mudança da descrição de um servidor
+ * @param int id indicando um usuário logado
+ * @param string nome indicando o nome do servidor
+ * @param string descricao indicando a nova descrição do servidor
+ * 
+ * @return Uma string informando o resultado da operação de criação
+ */
 string Sistema::set_server_desc(int id, const string nome, const string descricao)
 {
 	auto user = usuariosLogados.find(id);
@@ -167,6 +208,15 @@ string Sistema::set_server_desc(int id, const string nome, const string descrica
 /*
 A2.4 ok
 */
+
+/*! 
+ * Função que realiza a mudança do codigo de um servidor
+ * @param int id indicando um usuário logado
+ * @param string nome indicando o nome do servidor
+ * @param string codigo indicando o novo código do servidor
+ * 
+ * @return Uma string informando o resultado da operação de criação
+ */
 string Sistema::set_server_invite_code(int id, const string nome, const string codigo)
 {
 
@@ -205,9 +255,14 @@ string Sistema::set_server_invite_code(int id, const string nome, const string c
 
 /*
 A2.5 ok
-Neste caso você precisa listar todos os servidores do sistema, da forma como está vc está listando
-apenas o servidor que o usuário está!
 */
+
+/*! 
+ * Função que lista todos os servidores do sistema
+ * @param int id indicando um usuário logado
+ * 
+ * @return Uma string informando o resultado da operação de criação
+ */
 string Sistema::list_servers(int id)
 {
 	auto user = usuariosLogados.find(id);
@@ -227,6 +282,14 @@ string Sistema::list_servers(int id)
 /*
 A2.6 ok
 */
+
+/*! 
+ * Função que realiza a exclusão de um servidor
+ * @param int id indicando um usuário logado e dono do servidor
+ * @param string nome indicando o nome do servidor
+ * 
+ * @return Uma string informando o resultado da operação de criação
+ */
 string Sistema::remove_server(int id, const string nome)
 {
 	auto user = usuariosLogados.find(id);
@@ -265,6 +328,15 @@ string Sistema::remove_server(int id, const string nome)
 	return "Servidor '" + nome + "' não encontrado";
 }
 
+
+/*! 
+ * Função que realiza a entrada de um usuário logado em um servidor
+ * @param int id indicando um usuário logado
+ * @param string nome indicando o nome do servidor
+ * @param string codigo indicando o código do servidor
+ * 
+ * @return Uma string informando o resultado da operação de criação
+ */
 string Sistema::enter_server(int id, const string nome, const string codigo)
 {
 	auto user = usuariosLogados.find(id);
@@ -322,6 +394,14 @@ string Sistema::enter_server(int id, const string nome, const string codigo)
 	return "Servidor não encontrado";
 }
 
+
+/*! 
+ * Função que realiza a saída de um usuário logado de um servidor
+ * @param int id indicando um usuário logado
+ * @param string nome indicando o nome do servidor
+ * 
+ * @return Uma string informando o resultado da operação de criação
+ */
 string Sistema::leave_server(int id, const string nome)
 {
 	auto user = usuariosLogados.find(id);
@@ -354,6 +434,13 @@ string Sistema::leave_server(int id, const string nome)
 	return "Servidor '" + nome + "' não encontrado";
 }
 
+
+/*! 
+ * Função que lista os participantes de um servidor que o usuário logado está visualizando
+ * @param int id indicando um usuário logado
+ * 
+ * @return Uma string informando o resultado da operação de criação
+ */
 string Sistema::list_participants(int id)
 {
 	auto user = usuariosLogados.find(id);
@@ -374,6 +461,13 @@ string Sistema::list_participants(int id)
 	return "Você não está visualizando nenhum servidor";
 }
 
+
+/*! 
+ * Função que lista os canais de um servidor que o usuário logado está visualizando
+ * @param int id indicando um usuário logado
+ * 
+ * @return Uma string informando o resultado da operação de criação
+ */
 string Sistema::list_channels(int id)
 {
 	auto user = usuariosLogados.find(id);
@@ -393,6 +487,14 @@ string Sistema::list_channels(int id)
 	return "O usuário não está visualizando nenhum servidor"
 }
 
+
+/*! 
+ * Função que cria um canal em um servidor que o usuário logado e dono do servidor está visualizando
+ * @param int id indicando um usuário logado
+ * @param string nome indicando o nome do servidor
+ * 
+ * @return Uma string informando o resultado da operação de criação
+ */
 string Sistema::create_channel(int id, const string nome)
 {
 	auto user = usuariosLogados.find(id);
@@ -425,6 +527,14 @@ string Sistema::create_channel(int id, const string nome)
 	return "O usuário não está visualizando nenhum servidor";	
 }
 
+
+/*! 
+ * Função que adiciona um usuário logado e cadastrado em um servidor em um canal do mesmo servidor
+ * @param int id indicando um usuário logado
+ * @param string nome indicando o nome do servidor
+ * 
+ * @return Uma string informando o resultado da operação de criação
+ */
 string Sistema::enter_channel(int id, const string nome)
 {
 	auto user = usuariosLogados.find(id);
@@ -454,6 +564,13 @@ string Sistema::enter_channel(int id, const string nome)
 	return "Você não está visualizando nenhum servidor";
 }
 
+
+/*! 
+ * Função que remove um usuário logado e cadastrado em um servidor de um canal do mesmo servidor
+ * @param int id indicando um usuário logado
+ * 
+ * @return Uma string informando o resultado da operação de criação
+ */
 string Sistema::leave_channel(int id)
 {
 	auto user = usuariosLogados.find(id);
@@ -472,6 +589,14 @@ string Sistema::leave_channel(int id)
 	return "Você não está visualizando nenhum canal";
 }
 
+
+/*! 
+ * Função que adiciona uma mensagem em um canal de um servidor que um usuário logado está visualizando
+ * @param int id indicando um usuário logado
+ * @param string mensagem indicando o texto da nova mensagem
+ * 
+ * @return Uma string informando o resultado da operação de criação
+ */
 string Sistema::send_message(int id, const string mensagem)
 {
 	auto user = usuariosLogados.find(id);
@@ -497,6 +622,12 @@ string Sistema::send_message(int id, const string mensagem)
 	return "send_message NÃO IMPLEMENTADO";
 }
 
+/*! 
+ * Função que lista as mensagem de um canal de um servidor que um usuário logado está visualizando
+ * @param int id indicando um usuário logado
+ * 
+ * @return Uma string informando o resultado da operação de criação
+ */
 string Sistema::list_messages(int id)
 {
 	auto user = usuariosLogados.find(id);

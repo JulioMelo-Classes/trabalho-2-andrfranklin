@@ -24,6 +24,7 @@ Usuario::Usuario(int id_, string nome_, string email_, string senha_) {
 
 /*! 
  * Método que retorna um inteiro com o valor do id do usuário
+ * @return int com id do usuário
  */
 int Usuario::getId() {
   return id;
@@ -40,6 +41,7 @@ void Usuario::updateEmail(string email_) {
 
 /*! 
  * Método que retorna uma string com o valor do email do usuario
+ * @return string com o e-mail do usuário
  */
 string Usuario::getEmail() {
   return email;
@@ -56,6 +58,7 @@ void Usuario::updateSenha(string senha_) {
 
 /*! 
  * Método que retorna uma string com o valor da senha do usuario
+ * @return string com a senha do usuário
  */
 string Usuario::getSenha() {
   return senha;

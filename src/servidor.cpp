@@ -89,6 +89,7 @@ void Servidor::addCanal(CanalTexto canal)
 
 /*! 
  * Método que lista o nome dos canais de texto cadastrados no servidor
+ * @return string com o nome dos canais do servidor
  */
 string Servidor::listaCanais()
 {

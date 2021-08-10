@@ -18,6 +18,11 @@ class Mensagem
 		std::string conteudo;
 
 	public:
+	/*! 
+ 	 	 * Construtor para a classe Mensagem
+		 * @param id do usuário que envia a mensagem
+		 * @param string mensagem com o texto da mensagem
+	 	 */
 		Mensagem(int id, std::string mensagem);
 };
 
