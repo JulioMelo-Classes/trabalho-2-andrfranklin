@@ -134,7 +134,7 @@ void Servidor::addParticipante(int id)
 */
 void Servidor::removeParticipante(int id)
 {
-  for (auto it = participantesIDs.begin(); it != participantesIDs.end(); it++)
+  for (auto it = participantesIDs.begin(); it < participantesIDs.end(); it++)
   {
     if (*it == id)
     {
