@@ -484,7 +484,7 @@ string Sistema::list_channels(int id)
 		}
 	}
 
-	return "O usuário não está visualizando nenhum servidor"
+	return "O usuário não está visualizando nenhum servidor";
 }
 
 
@@ -511,7 +511,7 @@ string Sistema::create_channel(int id, const string nome)
 				if (!it->verificaCanalTexto(nome))
 				{
 					CanalTexto c(nome);
-					servidores.push_back(c);
+					it->addCanal(c);
 					return "Canal de texto '" + nome + "' criado";
 				}else
 				{
