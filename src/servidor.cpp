@@ -148,7 +148,8 @@ void Servidor::removeParticipante(int id)
 * @param Vector Um vetor de usuários cadastrados no sistema
 * @return Uma string com os nomes dos participantes do servidor
 */
-string Servidor::listaParticipantes(vector<Usuario> usuarios)
+
+string Servidor::listaParticipantes(vector<Usuario> usuarios) //poderia usar uma referencia para evitar cópias desnecessárias!
 {
   string result = "";
   for (auto itP = participantesIDs.begin(); itP != participantesIDs.end(); itP++)
@@ -204,6 +205,11 @@ void Servidor::adicionaMensagem(int id, string canal, string mensagem){
 * busca canal de texto
 * @param string Um nome do canal de texto
 * @return uma string com todas as mensagens do canal
+*/
+
+/*
+No caso em que o canal não existe este método causa um comportamento indefinido quebrando efetivamente o programa
+Dá para você verificar se fizer um list-messages de um usuário que está em um servidor mas não está em algum canal
 */
 string Servidor::listaMensagens(std::string canal, vector<Usuario> usuarios){
   for (auto it = canaisTexto.begin(); it != canaisTexto.end(); it++)

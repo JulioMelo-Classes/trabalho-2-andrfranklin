@@ -8,6 +8,11 @@
 #include "canaltexto.h"
 #include "usuario.h"
 
+/*
+Cp2 ok, a indentação desta classe está diferente das demais
+
+Documentação, vou considerar 80% já que faltou documentar os atribuitos
+*/
 class Servidor
 {
 	/*

@@ -43,7 +43,9 @@ string CanalTexto::listaMensagens(vector<Usuario> usuarios){
 		string nome = "";
 		for (auto itU = usuarios.begin(); itU != usuarios.end(); itU++)
 		{
-			if(it->enviadaPor == itU->getId()){
+			//quando vc faz uma busca e o elemento é encontrado sempre dê break(a menos que vc queira procurar mais). Nesse caso
+			//vc itera na lista toda mesmo que o id procurado seja o primeiro elemento.
+			if(it->enviadaPor == itU->getId()){ 
 				nome = itU->nome;
 			}
 		}

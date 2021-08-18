@@ -349,6 +349,10 @@ string Sistema::remove_server(int id, const string nome)
  * 
  * @return Uma string informando o resultado da operação de criação
  */
+
+ /*
+ A2.7 0,8
+ */
 string Sistema::enter_server(int id, const string nome, const string codigo)
 {
 	auto user = usuariosLogados.find(id);
@@ -361,7 +365,7 @@ string Sistema::enter_server(int id, const string nome, const string codigo)
 	{
 		if (it->getNome() == nome)
 		{
-			if(it->getUsuarioDonoId() == id){
+			if(it->getUsuarioDonoId() == id){ //faltou usar verificaID aqui para saber se o usuário ja estava no servidor, o que leva a 2 usuarios ficarem lá ao mesmo tempo. 20% a menos
 				it->addParticipante(id);
 				user->second.first = nome;
 				return "Entrou no servidor com sucesso";
@@ -420,6 +424,10 @@ string Sistema::enter_server(int id, const string nome, const string codigo)
  * 
  * @return Uma string informando o resultado da operação de criação
  */
+
+ /*
+ A2.8 ok
+ */
 string Sistema::leave_server(int id, const string nome)
 {
 	auto user = usuariosLogados.find(id);
@@ -459,6 +467,10 @@ string Sistema::leave_server(int id, const string nome)
  * 
  * @return Uma string informando o resultado da operação de criação
  */
+
+ /*
+ A2.9 ok
+ */
 string Sistema::list_participants(int id)
 {
 	auto user = usuariosLogados.find(id);
@@ -486,6 +498,10 @@ string Sistema::list_participants(int id)
  * 
  * @return Uma string informando o resultado da operação de criação
  */
+
+ /*
+ B1.1 ok
+ */
 string Sistema::list_channels(int id)
 {
 	auto user = usuariosLogados.find(id);
@@ -512,6 +528,12 @@ string Sistema::list_channels(int id)
  * @param string nome indicando o nome do servidor
  * 
  * @return Uma string informando o resultado da operação de criação
+ */
+
+ /*
+ B1.2 ok
+ Aqui você não precisava limitar ao dono do servidor para criar canais, como está funcionando não vou tirar pontos
+ mas não fazia parte da especificação
  */
 string Sistema::create_channel(int id, const string nome)
 {
@@ -552,6 +574,10 @@ string Sistema::create_channel(int id, const string nome)
  * @param string nome indicando o nome do servidor
  * 
  * @return Uma string informando o resultado da operação de criação
+ */
+
+ /*
+ B1.3 ok
  */
 string Sistema::enter_channel(int id, const string nome)
 {
@@ -615,6 +641,10 @@ string Sistema::leave_channel(int id)
  * 
  * @return Uma string informando o resultado da operação de criação
  */
+
+ /*
+ B2.1 ok
+ */
 string Sistema::send_message(int id, const string mensagem)
 {
 	auto user = usuariosLogados.find(id);
@@ -646,6 +676,10 @@ string Sistema::send_message(int id, const string mensagem)
  * 
  * @return Uma string informando o resultado da operação de criação
  */
+
+ /*
+ B2.2 0,8
+ */
 string Sistema::list_messages(int id)
 {
 	auto user = usuariosLogados.find(id);
@@ -655,7 +689,7 @@ string Sistema::list_messages(int id)
 	}
 
 	for(auto it = servidores.begin(); it != servidores.end(); it++){
-		if(it->getNome() == user->second.first){
+		if(it->getNome() == user->second.first){ //quando o usuário não está em qualquer canal ocorre um segfault 20% a menos
 			return it->listaMensagens(user->second.second,usuarios);
 		}
 	}

@@ -28,3 +28,5 @@ Ou pode criar um arquivo de texto com uma lista de comandos (um por linha) e exe
 ```console
 ./concordo < ../script_teste.txt
 ```
+
+<!--vou considerar 0,5 nos arquivos de testes já que você adicionou um "Script teste" mas não descreveu quais casos são testados-->

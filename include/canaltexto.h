@@ -7,7 +7,11 @@
 #include "mensagem.h"
 #include "usuario.h"
 
+/*
+CP2 ok
 
+Documentação, vou considerar 80% já que faltou documentar os atribuitos
+*/
 class CanalTexto
 {
 	/*
